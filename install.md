@@ -5,29 +5,8 @@
 # Should see `hadoop` directory
 > ls /home 
 
-
-# Download java into `/opt`
-> sudo mkdir /home/opt
-> cd /home/opt
-> sudo wget -O jdk-8u221-linux-x64.tar.gz \
-  -c --content-disposition \
-  "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=239835_230deb18db3e4014bb8e3e8324f81b43"
-> ls 
-# should return the `jdk-8u221-linux-x64.tar.gz`
-
-# Install java
-# Release access 777
-> sudo chmod 777 -R .
-> tar -xzvf jdk-8u221-linux-x64.tar.gz
-
-> update-alternatives --install /usr/bin/java java /home/opt/jdk1.8.0_192/bin/java 100
-> update-alternatives --install /usr/bin/javac javac /home/opt/jdk1.8.0_192/bin/javac 100 
-
-# double check java is installed
-> java -version
-
-java version "1.8.0_221"
-Java(TM) SE Runtime Environment (build 1.8.0_221-b11)
+## install Java 
+    See `install_java8.md`
 
 # Configure passwordless SSH
 > sudo apt-get install openssh-server openssh-client
