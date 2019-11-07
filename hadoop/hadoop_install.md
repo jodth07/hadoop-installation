@@ -1,4 +1,8 @@
 # Installing Hadoop/hdfs on Ubuntu 18.04
+
+## install Java 
+- See `java8_install.md`
+
 ## Add User from main account
     > sudo adduser hadoop
 
@@ -6,10 +10,7 @@
     > ls /home 
 Should see `hadoop` directory
 
-## install Java 
-- See `java8_install.md`
-
-## Configure passwordless SSH
+## Configure password-less SSH
     > sudo apt-get install openssh-server openssh-client
 
 ## change to hadoop user
@@ -21,6 +22,7 @@ Should see `hadoop` directory
 
 ## download Hadoop
     > wget https://archive.apache.org/dist/hadoop/common/hadoop-2.8.5/hadoop-2.8.5.tar.gz
+    > tar -xzvf hadoop-2.8.5.tar.gz
 
 
 ## Create symbolic link (if you want)
