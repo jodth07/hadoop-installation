@@ -1,10 +1,10 @@
 # Install Java 8 (8u221) on Ubuntu 18.04
 ## Download java into `/opt`
-`> sudo mkdir /home/opt` <br>
-`> cd /home/opt` <br>
-`> sudo wget -O jdk-8u221-linux-x64.tar.gz \` <br>
-  `-c --content-disposition \` <br>
-  `"https://javadl.oracle.com/webapps/download/AutoDL?BundleId=239835_230deb18db3e4014bb8e3e8324f81b43"` <br>
+`> sudo mkdir /home/opt`<br>
+`> cd /home/opt`<br>
+`> sudo wget -O jdk-8u221-linux-x64.tar.gz \`<br>
+  `-c --content-disposition \`<br>
+  `"https://javadl.oracle.com/webapps/download/AutoDL?BundleId=239835_230deb18db3e4014bb8e3e8324f81b43"`<br>
 `> ls` 
 ### should return the 
  jdk-8u221-linux-x64.tar.gz
