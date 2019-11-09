@@ -101,7 +101,7 @@ export JAVA_HOME=/home/opt/jdk1.8.0_221
 
 ### edit `mapred-site.xml`
     > cp mapred-site.xml.template mapred-site.xml
-    > nano cp mapred-site.xml
+    > nano mapred-site.xml
 
     <configuration>
         <property>
