@@ -9,7 +9,7 @@
     > cd /home/$USER/flume
     > wget http://mirror.cogentco.com/pub/apache/flume/1.9.0/apache-flume-1.9.0-bin.tar.gz
     > tar -xzvf apache-flume-1.9.0-bin.tar.gz
-    > mv -r apache-flume-1.9.0-bin/* .
+    > mv apache-flume-1.9.0-bin/* .
 
 # Update `bash_profile`
     > nano ~/.bash_profile
