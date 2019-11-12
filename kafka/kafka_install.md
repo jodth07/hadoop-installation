@@ -14,27 +14,28 @@ https://kafka.apache.org/downloads
 ## Add Kafka to `bash_profile`
     > nano ~/.bash_profile
     ### Add to .bash_profile
-    export KAFKA_HOME=/home/hadoop/kafka
+    export KAFKA_HOME=~/kafka
     export PATH=$PATH:$KAFKA_HOME/bin
    
 ## Run Zookeeper
     > cd
-    >  zookeeper-server-start.sh kafka/config/zookeeper.propertie
+    > zookeeper-server-start.sh kafka/config/zookeeper.propertie
 
-## Run Kafka
+## Run Kafka (On New Terminal)
     > kafka-server-start.sh kafka/config/server.properties
     
     
-## Create new topic
+## Create new topic (On New Terminal)
     > kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic thedragons
     
-## list topics in zookeeper
+## list topics in zookeeper (On New Terminal)
     > kafka-topics.sh --list --zookeeper localhost:2181
+    > kafka-topics.sh --describe --zookeeper localhost:2181 --topic thedragons
 
-## create producer
+## create producer (On New Terminal)
     > kafka-console-producer.sh --broker-list localhost:9092 --topic thedragons
   
-## create consumer
+## create consumer (On New Terminal)
     > kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic thedragons
     
 # Send message from producer to be received in consumer.
