@@ -51,7 +51,11 @@ if __name__ == '__main__':
     ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
     ACCESS_TOKEN_SECRET = os.environ['ACCESS_TOKEN_SECRET']
 
-    hash_tag_list = ["cold"]
+    hash_tag_list = ["thursday"]
 
     t_streamer = TStreamer()
     t_streamer.stream_tweets(hash_tag_list)
+
+
+
+
