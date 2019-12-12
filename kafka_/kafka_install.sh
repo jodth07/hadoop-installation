@@ -7,6 +7,7 @@
 
 ## Download and install kafka
 cd /opt/
+sudo chown $USER .
 wget https://www-eu.apache.org/dist/kafka/2.3.1/kafka_2.11-2.3.1.tgz
 tar -xzvf kafka_2.11-2.3.1.tgz
 ln -s kafka_2.11-2.3.1 kafka
