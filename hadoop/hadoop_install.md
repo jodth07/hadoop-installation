@@ -52,8 +52,8 @@ export JAVA_HOME=/home/opt/jdk1.8.0_221
 ## Now let's edit our configurations
     > cd hadoop/etc/hadoop/
 
-### edit `hadoop_env.sh`
-    > nano hadoop_env.sh
+### edit `hadoop-env.sh`
+    > nano hadoop-env.sh
 
 export HADOOP_CONF_DIR=/home/hadoop/hadoop/etc/hadoop<br>
 export JAVA_HOME=/home/opt/jdk1.8.0_221
