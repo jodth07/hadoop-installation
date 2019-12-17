@@ -33,7 +33,7 @@ Should see `hadoop` directory
     > nano ~/.bash_profile
 
 ## hadoop variables setup (write into `.bash_profile`)
-export HADOOP_HOME=/home/hadoop/hadoop <br>
+export HADOOP_HOME=/home/$USER/hadoop <br>
 export HADOOP_INSTALL=$HADOOP_HOME<br>
 export HADOOP_MAPRED_HOME=$HADOOP_HOME<br>
 export HADOOP_COMMON_HOME=$HADOOP_HOME<br>

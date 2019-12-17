@@ -3,7 +3,7 @@
 # https://kafka.apache.org/downloads
 
 ## install Java 
-# - See `java8_install.md`
+# - See `1b_java8_install.sh`
 
 ## Download and install kafka
 cd /opt/
