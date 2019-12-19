@@ -1,3 +1,6 @@
+# make sure netcat is installed
+sudo apt install openssh-client openssh-server
+
 # set up receiver
 netcat -l -p 9999
 
