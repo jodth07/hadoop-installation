@@ -1,7 +1,7 @@
-# Installing Hadoop/hdfs on Ubuntu 18.04
+# Installing Hadoop/hdfs on Ubuntu 18.04 with `hadoop` user
 
 ## install Java 
-- See `java8_install.md`
+# See `java8_install.md`
 
 ## Add User from main account
     > sudo adduser hadoop
