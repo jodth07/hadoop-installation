@@ -22,15 +22,16 @@ ln -s hadoop-2.8.5 hadoop
 nano ~/.bash_profile
 
 ## hadoop variables setup (write into `.bash_profile`)
-export HADOOP_HOME=/opt/hadoop
-export HADOOP_INSTALL=$HADOOP_HOME
-export HADOOP_MAPRED_HOME=$HADOOP_HOME
-export HADOOP_COMMON_HOME=$HADOOP_HOME
-export HADOOP_HDFS_HOME=$HADOOP_HOME
-export YARN_HOME=$HADOOP_HOME
-export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
-export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
-export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+  export HADOOP_HOME=/opt/hadoop
+  export HADOOP_INSTALL=$HADOOP_HOME
+  export HADOOP_MAPRED_HOME=$HADOOP_HOME
+  export HADOOP_COMMON_HOME=$HADOOP_HOME
+  export HADOOP_HDFS_HOME=$HADOOP_HOME
+  export YARN_HOME=$HADOOP_HOME
+  export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+  export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
+  export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+  export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
 
 ## Setup Java Home in `.bash_profile`
 export JAVA_HOME=readlink -e $(which java)
@@ -45,45 +46,46 @@ cd hadoop/etc/hadoop/
 nano hadoop-env.sh
 
 # add to `hadoop-env.sh`
-export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
-export JAVA_HOME=/opt/jdk1.8.0_221
+  export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
+  export JAVA_HOME=/opt/jdk1.8.0_221
 
 ### edit `core-site.xml`
 nano core-site.xml
 
-## add to `core-site.xml`
-    <configuration>
-        <property>
-            <name>fs.defaultFS</name>
-            <value>hdfs://localhost:9000</value>
-        </property>
-        <property>
-            <name>hadoop.tmp.dir</name>
-            <value>/opt/hadoop/hadoop_tmp</value>
-        </property>
-    </configuration>
+## add lines below to `core-site.xml`
+  <configuration>
+      <property>
+          <name>fs.defaultFS</name>
+          <value>hdfs://localhost:9000</value>
+      </property>
+      <property>
+          <name>hadoop.tmp.dir</name>
+          <value>/opt/hadoop/hadoop_tmp</value>
+      </property>
+  </configuration>
 
 
 ## Create hadoop temp directory
 mkdir /opt/hadoop/hadoop_tmp
 
 ### Edit `hdfs-site.xml`
-    > nano hdfs-site.xml
+nano hdfs-site.xml
 
-    <configuration>
-        <property>
-            <name>dfs.replication</name>
-            <value>1</value>
-        </property>
-        <property>
-            <name>dfs.name.dir</name>
-            <value>file:///opt/hadoop/hdfs/namenode</value>
-        </property>
-        <property>
-            <name>dfs.data.dir</name>
-            <value>file:///opt/hadoop/hdfs/datanode</value>
-        </property>
-    </configuration>
+## add lines below to `hdfs-site.xml`
+  <configuration>
+      <property>
+          <name>dfs.replication</name>
+          <value>1</value>
+      </property>
+      <property>
+          <name>dfs.name.dir</name>
+          <value>file:///opt/hadoop/hdfs/namenode</value>
+      </property>
+      <property>
+          <name>dfs.data.dir</name>
+          <value>file:///opt/hadoop/hdfs/datanode</value>
+      </property>
+  </configuration>
 
 ## create datanode and namenode directory
 mkdir -p /opt/hadoop/hdfs/namenode
@@ -94,23 +96,25 @@ mkdir -p /opt/hadoop/hdfs/datanode
 cp mapred-site.xml.template mapred-site.xml
 nano mapred-site.xml
 
-    <configuration>
-        <property>
-            <name>mapreduce.framework.name</name>
-            <value>yarn</value>
-        </property>
-    </configuration>
+## add lines below to `mapred-site.xml`
+  <configuration>
+      <property>
+          <name>mapreduce.framework.name</name>
+          <value>yarn</value>
+      </property>
+  </configuration>
 
 
 ### edit `yarn-site.xml`
 nano yarn-site.xml
 
-    <configuration>
-        <property>
-            <name>mapreduceyarn.nodemanager.aux-services</name>
-            <value>mapreduce_shuffle</value>
-        </property>
-    </configuration>
+### add lines below to `yarn-site.xml`
+  <configuration>
+      <property>
+          <name>mapreduceyarn.nodemanager.aux-services</name>
+          <value>mapreduce_shuffle</value>
+      </property>
+  </configuration>
 
 
 ## Test hadoop and hdfs variables
@@ -120,16 +124,17 @@ hdfs version
 
 ## Starting the Hadoop Cluster
 hdfs namenode -format
-
 ## should have `status 0` at the end
+
+# Start hdfs servises
 start-dfs.sh
 start-yarn.sh
 
 # Test hadoop / hdfs is working
-hdfs dfs -mkdir /tmp
-hadoop fs -mkdir /data
+hdfs dfs -mkdir /tmp /user
+hadoop fs -mkdir /data # hadoop fs is depricated
 hdfs dfs -ls
-hadoop fs -ls
+hadoop fs -ls # hadoop fs is depricated
 
 # Congratulations, hadoop/hdfs is installed.
 # check UI
