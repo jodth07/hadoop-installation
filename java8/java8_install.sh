@@ -1,11 +1,9 @@
 # Install Java 8 (8u221) on Ubuntu 18.04
 ## Download java into `/opt`
-sudo mkdir /home/opt
-cd /home/opt
+cd /opt
 sudo chown $USER -R .
 
-
-sudo wget -O jdk-8u221-linux-x64.tar.gz \
+wget -O jdk-8u221-linux-x64.tar.gz \
 -c --content-disposition \
 "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=239835_230deb18db3e4014bb8e3e8324f81b43"
 
@@ -17,10 +15,18 @@ ls
 ## Install java
 ### Release access 777
 tar -xzvf jdk-8u221-linux-x64.tar.gz
+rm jdk-8u221-linux-x64.tar.gz
 
-### Create java links
-sudo update-alternatives --install /usr/bin/java java /home/opt/jdk1.8.0_221/bin/java 100
-sudo update-alternatives --install /usr/bin/javac javac /home/opt/jdk1.8.0_221/bin/javac 100
+echo "## Set up JAVA_HOME" >> ~/.bash_profile
+echo "JAVA_HOME=/opt/jdk1.8.0_221" >> ~/.bash_profile
+echo "export PATH=$PATH:$JAVA_HOME/bin" >> ~/.bash_profile
+source ~/.bash_profile
+
+which java
+
+### OPTIONAL : Create java simbolic links to /usr/bin/java
+sudo update-alternatives --install /usr/bin/java java /opt/jdk1.8.0_221/bin/java 100
+sudo update-alternatives --install /usr/bin/javac javac /opt/jdk1.8.0_221/bin/javac 100
 
 ## double check java is installed
 cd
