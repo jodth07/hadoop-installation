@@ -19,25 +19,26 @@ rm hadoop-2.8.5.tar.gz
 ln -s hadoop-2.8.5 hadoop
 
 ## Adding hadoop variables to `.~/bash_profile`
-nano ~/.bash_profile
+# nano ~/.bash_profile
 
 ## hadoop variables setup (write into `.bash_profile`)
-  export HADOOP_HOME=/opt/hadoop
-  export HADOOP_INSTALL=$HADOOP_HOME
-  export HADOOP_MAPRED_HOME=$HADOOP_HOME
-  export HADOOP_COMMON_HOME=$HADOOP_HOME
-  export HADOOP_HDFS_HOME=$HADOOP_HOME
-  export YARN_HOME=$HADOOP_HOME
-  export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
-  export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
-  export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
-  export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
-
-## Setup Java Home in `.bash_profile`
-export JAVA_HOME=readlink -e $(which java)
+echo "## set up HADOOP_HOME" >> ~/.bash_profile
+echo "export HADOOP_HOME=/opt/hadoop" >> ~/.bash_profile
+echo "export HADOOP_INSTALL=\$HADOOP_HOME" >> ~/.bash_profile
+echo "export HADOOP_MAPRED_HOME=\$HADOOP_HOME" >> ~/.bash_profile
+echo "export HADOOP_COMMON_HOME=\$HADOOP_HOME" >> ~/.bash_profile
+echo "export HADOOP_HDFS_HOME=\$HADOOP_HOME" >> ~/.bash_profile
+echo "export YARN_HOME=\$HADOOP_HOME" >> ~/.bash_profile
+echo "export HADOOP_COMMON_LIB_NATIVE_DIR=\$HADOOP_HOME/lib/native" >> ~/.bash_profile
+echo "export PATH=\$PATH:\$HADOOP_HOME/bin" >> ~/.bash_profile
+echo "export PATH=\$PATH:\$HADOOP_HOME/sbin" >> ~/.bash_profile
+echo "export HADOOP_CONF_DIR\$HADOOP_HOME/etc/hadoop" >> ~/.bash_profile
+echo "export HADOOP_OPTS=\"-Djava.library.path=\$HADOOP_HOME/lib/native\"" >> ~/.bash_profile
+echo " "  >> ~/.bash_profile
 
 ## make hadoop and java variables available to system
 source ~/.bash_profile
+which hadoop
 
 ## Now let's edit our configurations
 cd hadoop/etc/hadoop/
@@ -46,23 +47,23 @@ cd hadoop/etc/hadoop/
 nano hadoop-env.sh
 
 # add to `hadoop-env.sh`
-  export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
   export JAVA_HOME=/opt/jdk1.8.0_221
+  export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
 
 ### edit `core-site.xml`
 nano core-site.xml
 
 ## add lines below to `core-site.xml`
-  <configuration>
-      <property>
-          <name>fs.defaultFS</name>
-          <value>hdfs://localhost:9000</value>
-      </property>
-      <property>
-          <name>hadoop.tmp.dir</name>
-          <value>/opt/hadoop/hadoop_tmp</value>
-      </property>
-  </configuration>
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://localhost:9000</value>
+    </property>
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>/opt/hadoop/hadoop_tmp</value>
+    </property>
+</configuration>
 
 
 ## Create hadoop temp directory
@@ -72,20 +73,20 @@ mkdir /opt/hadoop/hadoop_tmp
 nano hdfs-site.xml
 
 ## add lines below to `hdfs-site.xml`
-  <configuration>
-      <property>
-          <name>dfs.replication</name>
-          <value>1</value>
-      </property>
-      <property>
-          <name>dfs.name.dir</name>
-          <value>file:///opt/hadoop/hdfs/namenode</value>
-      </property>
-      <property>
-          <name>dfs.data.dir</name>
-          <value>file:///opt/hadoop/hdfs/datanode</value>
-      </property>
-  </configuration>
+<configuration>
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>dfs.name.dir</name>
+        <value>file:///opt/hadoop/hdfs/namenode</value>
+    </property>
+    <property>
+        <name>dfs.data.dir</name>
+        <value>file:///opt/hadoop/hdfs/datanode</value>
+    </property>
+</configuration>
 
 ## create datanode and namenode directory
 mkdir -p /opt/hadoop/hdfs/namenode
@@ -97,24 +98,24 @@ cp mapred-site.xml.template mapred-site.xml
 nano mapred-site.xml
 
 ## add lines below to `mapred-site.xml`
-  <configuration>
-      <property>
-          <name>mapreduce.framework.name</name>
-          <value>yarn</value>
-      </property>
-  </configuration>
+<configuration>
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+</configuration>
 
 
 ### edit `yarn-site.xml`
 nano yarn-site.xml
 
 ### add lines below to `yarn-site.xml`
-  <configuration>
-      <property>
-          <name>mapreduceyarn.nodemanager.aux-services</name>
-          <value>mapreduce_shuffle</value>
-      </property>
-  </configuration>
+<configuration>
+    <property>
+        <name>mapreduceyarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+</configuration>
 
 
 ## Test hadoop and hdfs variables
