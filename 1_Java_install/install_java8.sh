@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # change user configuration for /opt
+cd /opt
 sudo chown -R $USER .
 
 # install openssh to ssh with via port 22
-sudo apt install openssh-server
-sudo apt install openssh-client
+sudo apt install openssh-server openssh-client -y
 
 # Install Java 8 on Ubuntu 18.04
 sudo apt install openjdk-8-jdk-headless

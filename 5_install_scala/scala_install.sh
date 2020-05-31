@@ -1,12 +1,16 @@
 # Download spark
 cd /opt
+sudo chown $USER .
+mkdir downloads
+
+# download scala
 wget https://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz
 
 # extract spark
 tar xvf scala-2.11.8.tgz
 mv scala-2.11.8.tgz downloads/
 
-ln -s scala-2.11.8.tgz scala
+ln -s scala-2.11.8 scala
 
 # add paths to  .bash_profile
 echo "
@@ -18,5 +22,5 @@ export PATH=\$PATH:\$SCALA_HOME/bin
 # reload  ~/.bash_profile
 source  ~/.bash_profile
 
-which scala
+scala -version
 

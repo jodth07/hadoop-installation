@@ -1,12 +1,16 @@
 ## Download and install kafka
 cd /opt/
 sudo chown $USER .
+mkdir downloads
+
 wget https://www-eu.apache.org/dist/kafka/2.4.1/kafka_2.11-2.4.1.tgz
 tar -xzvf kafka_2.11-2.4.1.tgz
 ln -s kafka_2.11-2.4.1 kafka
+mv kafka_2.11-2.4.1.tgz downloads/
+
+
 
 ## Add Kafka to `bash_profile`
-nano ~/.bash_profile
 
 ### Add to .bash_profile
 echo "
@@ -36,8 +40,6 @@ kafka-topics.sh --describe --zookeeper localhost:2181 --topic topic_one
 
 ## create producer (On New Terminal)
 kafka-console-producer.sh --broker-list localhost:9092 --topic topic_one
-  
+
 ## create consumer (On New Terminal)
 kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topic_one
-    
-# Send message from producer to be received in consumer.

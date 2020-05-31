@@ -1,8 +1,11 @@
 # install SBT ON UBUNTU/MAC
 
-# download sbt zip
 cd /opt
 sudo chown $USER .
+mkdir downloads
+
+
+# download sbt zip
 wget https://piccolo.link/sbt-1.2.7.zip
 
 # unzip sbt

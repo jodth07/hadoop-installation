@@ -7,14 +7,14 @@
 sudo apt-get install openssh-server
 sudo apt-get install openssh-client
 
-ssh-keygen -t rsa
+cat /dev/zero | ssh-keygen -q -N ""
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 cd /opt
 ## download Hadoop
 wget https://archive.apache.org/dist/hadoop/common/hadoop-2.8.5/hadoop-2.8.5.tar.gz
 tar -xzvf hadoop-2.8.5.tar.gz
-rm hadoop-2.8.5.tar.gz
+mv hadoop-2.8.5.tar.gz downloads/
 
 ## Create symbolic link (if you want)
 ln -s hadoop-2.8.5 hadoop
@@ -45,23 +45,24 @@ which hadoop
 cd /opt/hadoop/etc/hadoop/
 
 # edit `hadoop-env.sh`
-nano hadoop-env.sh
 
 # add configurations to `hadoop-env.sh`
 sed -i "/{JAVA_HOME}/d"  hadoop-env.sh
 sed -i "/HADOOP_CONF_DIR=/d"  hadoop-env.sh
 
 echo "
+
+# Adding JAVA_HOME and HADOOP_CONF_DIR
 export JAVA_HOME=$JAVA_HOME
 export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
+
 " >> hadoop-env.sh
 
 
 ### edit `core-site.xml`
 sed -i "/configuration>/d" core-site.xml
 
-## add lines below to `core-site.xml`
-
+## add configurations to `core-site.xml`
 echo "
 <configuration>
     <property>
@@ -121,8 +122,7 @@ echo "
 ### edit `yarn-site.xml`
 sed -i "/configuration>/d" yarn-site.xml
 
-### add lines below to `yarn-site.xml`
-
+### add configurations to `yarn-site.xml`
 echo "
 <configuration>
     <property>
@@ -143,6 +143,7 @@ hdfs namenode -format
 
 # Start hdfs servises
 start-dfs.sh
+
 start-yarn.sh
 
 # Test hadoop / hdfs is working
