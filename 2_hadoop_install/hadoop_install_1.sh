@@ -1,4 +1,4 @@
-# Installing Hadoop/hdfs on Ubuntu 18.04 with `hadoop` user
+# Installing Hadoop/hdfs on Ubuntu 18.04 with `2_hadoop_install` user
 
 ## install Java 
 # See `java8_install.md`
@@ -6,14 +6,14 @@
 ## Add User from main account
 sudo adduser hadoop
 
-## Check that hadoop user is created
+## Check that 2_hadoop_install user is created
 ls /home 
-# Should see `hadoop` directory
+# Should see `2_hadoop_install` directory
 
 ## Configure password-less SSH
 sudo apt-get install openssh-server openssh-client
 
-## change to hadoop user
+## change to 2_hadoop_install user
 su - hadoop
 
 ssh-keygen -t rsa
@@ -29,10 +29,10 @@ tar -xzvf hadoop-2.8.5.tar.gz
 ln -s hadoop-2.8.5 hadoop
 
 
-## Adding hadoop variables to `.~/bash_profile`
+## Adding 2_hadoop_install variables to `.~/bash_profile`
 nano ~/.bash_profile
 
-## hadoop variables setup (write into `.bash_profile`)
+## 2_hadoop_install variables setup (write into `.bash_profile`)
 export HADOOP_HOME=/home/$USER/hadoop <br>
 export HADOOP_INSTALL=$HADOOP_HOME<br>
 export HADOOP_MAPRED_HOME=$HADOOP_HOME<br>
@@ -46,13 +46,13 @@ export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop<br>
 ## Setup Java Home
 export JAVA_HOME=/home/opt/jdk1.8.0_221
 
-## make hadoop and java variables available to system
+## make 2_hadoop_install and java variables available to system
 source ~/.bash_profile
 
 ## Now let's edit our configurations
 cd hadoop/etc/hadoop/
 
-### edit `hadoop-env.sh`
+### edit `2_hadoop_install-env.sh`
 nano hadoop-env.sh
 
 export HADOOP_CONF_DIR=/home/hadoop/hadoop/etc/hadoop<br>
@@ -73,7 +73,7 @@ nano core-site.xml
 </configuration>
 
 
-## Create hadoop temp directory
+## Create 2_hadoop_install temp directory
 mkdir /home/hadoop/hadoop_tmp
 
 ### Edit `hdfs-site.xml`
@@ -123,7 +123,7 @@ nano yarn-site.xml
 </configuration>
 
 
-## Test hadoop and hdfs variables
+## Test 2_hadoop_install and hdfs variables
 hadoop version
 hdfs version
 
@@ -135,12 +135,12 @@ hdfs namenode -format
 start-dfs.sh
 start-yarn.sh
 
-# Test hadoop / hdfs is working
+# Test 2_hadoop_install / hdfs is working
 hdfs dfs -mkdir /tmp
 hadoop fs -mkdir /data
 hdfs dfs -ls
 hadoop fs -ls
 
-# Congratulations, hadoop/hdfs is installed.
+# Congratulations, 2_hadoop_install/hdfs is installed.
 # check UI
 ip_address:50070
