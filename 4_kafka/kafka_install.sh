@@ -1,31 +1,27 @@
-# Install kafka 2.3.1 on ubuntu 18.04
-# for other version, find version at
-# https://kafka.apache.org/downloads
-
-## install Java 
-# - See `1b_java8_install.sh`
-
 ## Download and install kafka
 cd /opt/
 sudo chown $USER .
-wget https://www-eu.apache.org/dist/kafka/2.3.1/kafka_2.11-2.3.1.tgz
-tar -xzvf kafka_2.11-2.3.1.tgz
-ln -s kafka_2.11-2.3.1 kafka
+wget https://www-eu.apache.org/dist/kafka/2.4.1/kafka_2.11-2.4.1.tgz
+tar -xzvf kafka_2.11-2.4.1.tgz
+ln -s kafka_2.11-2.4.1 kafka
 
 ## Add Kafka to `bash_profile`
 nano ~/.bash_profile
 
 ### Add to .bash_profile
+echo "
+# setting up KAFKA_HOME
 export KAFKA_HOME=/opt/kafka
-export PATH=$PATH:$KAFKA_HOME/bin
-
+export PATH=\$PATH:\$KAFKA_HOME/bin
+" >> ~/.bash_profile
 
 # reload bash_profile
 source ~/.bash_profile
 
 ## Run Zookeeper
 cd
-zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper.properties
+# add flag -daemon to run process in background
+zookeeper-server-start.sh  $KAFKA_HOME/config/zookeeper.properties
 
 ## Run Kafka (On New Terminal)
 kafka-server-start.sh $KAFKA_HOME/config/server.properties

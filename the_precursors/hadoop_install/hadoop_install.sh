@@ -20,10 +20,10 @@ tar -xzvf hadoop-2.8.5.tar.gz
 ln -s hadoop-2.8.5 hadoop
 
 
-## Adding hadoop variables to `.~/bash_profile`
+## Adding 2_hadoop_install variables to `.~/bash_profile`
 nano ~/.bash_profile
 
-## hadoop variables setup (write into `.bash_profile`)
+## 2_hadoop_install variables setup (write into `.bash_profile`)
 export HADOOP_HOME=/home/opt/hadoop
 export HADOOP_INSTALL=$HADOOP_HOME
 export HADOOP_MAPRED_HOME=$HADOOP_HOME
@@ -34,13 +34,13 @@ export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
 export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
 
-## make hadoop and java variables available to system
+## make 2_hadoop_install and java variables available to system
 source ~/.bash_profile
 
 ## Now let's edit our configurations
 cd /home/opt/hadoop/etc/hadoop/
 
-### edit `hadoop-env.sh`
+### edit `2_hadoop_install-env.sh`
 nano hadoop-env.sh
 
 export HADOOP_CONF_DIR=/home/opt/hadoop/etc/hadoop
@@ -61,7 +61,7 @@ nano core-site.xml
 </configuration>
 
 
-## Create hadoop temp directory
+## Create 2_hadoop_install temp directory
 mkdir /home/opt/hadoop/hadoop_tmp
 
 ### Edit `hdfs-site.xml`
@@ -110,7 +110,7 @@ nano yarn-site.xml
 </configuration>
 
 
-## Test hadoop and hdfs variables
+## Test 2_hadoop_install and hdfs variables
 hadoop version
 hdfs version
 
@@ -122,12 +122,12 @@ hdfs namenode -format
 start-dfs.sh
 start-yarn.sh
 
-# Test hadoop / hdfs is working
+# Test 2_hadoop_install / hdfs is working
 hdfs dfs -mkdir /tmp
 hadoop fs -mkdir /data
 hdfs dfs -ls /
 hadoop fs -ls /
 
-# Congratulations, hadoop/hdfs is installed.
+# Congratulations, 2_hadoop_install/hdfs is installed.
 # check UI
 ip_address:50070

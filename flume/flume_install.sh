@@ -1,11 +1,7 @@
 # make sure java is installed
-# see java8_install.md
-
-# make sure netcat is installed
-sudo apt-get install openssh-server openssh-client
+# see java_install.md
 
 # Download and install flume in flume directory
-mkdir /opt/flume
 cd /opt
 wget http://mirror.cogentco.com/pub/apache/flume/1.9.0/apache-flume-1.9.0-bin.tar.gz
 tar -xzvf apache-flume-1.9.0-bin.tar.gz
