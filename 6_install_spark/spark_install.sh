@@ -1,4 +1,5 @@
 # Download spark
+cd /opt
 wget http://www.trieuvan.com/apache/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
 
 # extract spark
