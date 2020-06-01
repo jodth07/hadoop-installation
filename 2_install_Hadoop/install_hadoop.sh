@@ -141,12 +141,12 @@ hdfs version
 hdfs namenode -format
 ## should have `status 0` at the end
 
-# Start hdfs servises
+# Start HDFS services
 start-dfs.sh
 
 start-yarn.sh
 
-# Test hadoop / hdfs is working
+# Test hadoop / HDFS is working
 hdfs dfs -mkdir /tmp /user /data /hive # hadoop fs is deprecated
 hdfs dfs -ls /
 
