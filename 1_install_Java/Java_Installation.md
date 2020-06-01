@@ -1,7 +1,7 @@
 # Install java with the commands below with the admin/root password
 
 ### change user configuration for /opt (run on terminal)
-> cd /opt
+> cd /opt <br>
 > sudo chown -R $USER .
 
 ### install openssh to ssh with via port 22 (run on terminal)
@@ -13,14 +13,16 @@
 ### set up JAVA_HOME environment variable (run on terminal)
 > nano ~/.bash_profile 
 
-# Setting up JAVA_HOME (copy to `~/.bash_profile`)
+### Setting up JAVA_HOME (copy to `~/.bash_profile`)
     Set up JAVA_HOME
     export JAVA_HOME=$(readlink $(which java) -f | sed "s/\/bin\/java//g")
     export PATH=\$PATH:\$JAVA_HOME/bin
 
-# reload bash_profile (run on terminal)
+### reload bash_profile (run on terminal)
 > source ~/.bash_profile
 
-# check Java installations
+### check Java installations
 > echo $JAVA_HOME
 > javac -version
+
+## java is installed and JAVA_HOME path is set.
