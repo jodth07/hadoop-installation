@@ -47,22 +47,24 @@
 > cd /opt/hadoop/etc/hadoop/
 
 
-### add configurations to `hadoop-env.sh` (run on terminal)
+### edit `hadoop-env.sh` inline (run on terminal)
 > sed -i "/{JAVA_HOME}/d"  hadoop-env.sh  <br>
 > sed -i "/HADOOP_CONF_DIR=/d"  hadoop-env.sh <br>
 
-### edit `hadoop-env.sh` (run on terminal)
+### edit `hadoop-env.sh` file (run on terminal)
 > nano hadoop-env.sh
 
 
-### Adding JAVA_HOME and HADOOP_CONF_DIR (copy to `hadoop-env.sh`)
+### Adding JAVA_HOME and HADOOP_CONF_DIR to `hadoop-env.sh` (copy to `hadoop-env.sh`)
     export JAVA_HOME=$JAVA_HOME
     export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
 
 
-### edit `core-site.xml` (run on terminal)
+### edit `core-site.xml` inline (run on terminal)
 > sed -i "/configuration>/d" core-site.xml
 
+### edit `core-site.xml` file (run on terminal)
+> nano core-site.xml
 
 ### add configurations to `core-site.xml` (copy to `core-site.xml`)
     <configuration>
