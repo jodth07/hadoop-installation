@@ -4,8 +4,7 @@
 #### See `Java_Installation.md`
 
 ### Configure password-less SSH (run on terminal)
-> sudo apt-get install openssh-server <br>
-> sudo apt-get install openssh-client <br>
+> sudo apt-get install openssh-server openssh-client -y <br>
 
 > cat /dev/zero | ssh-keygen -q -N "" <br>
 > cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys <br>
@@ -48,13 +47,11 @@
 > cd /opt/hadoop/etc/hadoop/
 
 
-### edit `hadoop-env.sh` (run on terminal)
-> nano hadoop-env.sh
-
-
 ### add configurations to `hadoop-env.sh` (run on terminal)
 > sed -i "/{JAVA_HOME}/d"  hadoop-env.sh  <br>
 > sed -i "/HADOOP_CONF_DIR=/d"  hadoop-env.sh <br>
+
+### edit `hadoop-env.sh` (run on terminal)
 > nano hadoop-env.sh
 
 
