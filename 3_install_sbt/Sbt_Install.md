@@ -18,7 +18,7 @@
 ### setting up SBT_HOME (copy to `~/.bash_profile`)
     # setting up SBT_HOME
     export SBT_HOME=/opt/sbt
-    export PATH=\${PATH}:\$SBT_HOME/bin
+    export PATH=${PATH}:$SBT_HOME/bin
 
 ### restart bash file (run on terminal)
 > source ~/.bash_profile

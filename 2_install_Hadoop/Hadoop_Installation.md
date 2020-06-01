@@ -43,16 +43,20 @@
 > source ~/.bash_profile  <br>
 > which hadoop
 
+
 ### Now let's edit our configurations (run on terminal)
 > cd /opt/hadoop/etc/hadoop/
 
+
 ### edit `hadoop-env.sh` (run on terminal)
 > nano hadoop-env.sh
+
 
 ### add configurations to `hadoop-env.sh` (run on terminal)
 > sed -i "/{JAVA_HOME}/d"  hadoop-env.sh  <br>
 > sed -i "/HADOOP_CONF_DIR=/d"  hadoop-env.sh <br>
 > nano hadoop-env.sh
+
 
 ### Adding JAVA_HOME and HADOOP_CONF_DIR (copy to `hadoop-env.sh`)
     export JAVA_HOME=$JAVA_HOME
@@ -61,6 +65,7 @@
 
 ### edit `core-site.xml` (run on terminal)
 > sed -i "/configuration>/d" core-site.xml
+
 
 ### add configurations to `core-site.xml` (copy to `core-site.xml`)
     <configuration>
@@ -78,8 +83,10 @@
 ### Create hadoop temp directory (run on terminal)
 > mkdir /opt/hadoop/hadoop_tmp
 
+
 ### Edit `hdfs-site.xml` (run on terminal)
 > sed -i "/configuration>/d" hdfs-site.xml
+
 
 ### add configurations to `hdfs-site.xml` (copy to `hdfs-site.xml`)
     <configuration>
@@ -107,6 +114,7 @@
 > cp mapred-site.xml.template mapred-site.xml <br>
 > sed -i "/configuration>/d" mapred-site.xml
 
+
 ### add configurations to `mapred-site.xml` (copy to `mapred-site.xml`)
     <configuration>
         <property>
@@ -119,6 +127,7 @@
 ### edit `yarn-site.xml`  (run on terminal)
 > sed -i "/configuration>/d" yarn-site.xml
 
+
 ### add configurations to `yarn-site.xml` (copy to `yarn-site.xml`)
     <configuration>
         <property>
@@ -127,21 +136,26 @@
         </property>
     </configuration>
 
+
 ### Test hadoop and hdfs variables (run on terminal)
 > hadoop version <br>
 > hdfs version
+
 
 ### formatting hadoop/hdfs (run on terminal)
 > hdfs namenode -format
 ### should have `status 0` at the end
 
+
 ### Start HDFS services (run on terminal)
 > start-dfs.sh <br>
 > start-yarn.sh
 
+
 ### Test hadoop / HDFS is working (run on terminal)
 > hdfs dfs -mkdir /tmp /user /data /hive # hadoop fs is deprecated <br>
 > hdfs dfs -ls /
+
 
 ### Congratulations, hadoop/HDFS is installed.
 ### check hadoop UI at localhost:50070
