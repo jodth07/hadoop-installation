@@ -1,5 +1,11 @@
 ### Installing Hadoop/HDFS on Ubuntu 18.04 without `hadoop` user in /opt
 
+### setup opt for installations (run on terminal)
+> cd /opt <br>
+> sudo chown $USER . <br>
+> mkdir downloads
+
+
 ### install Java
 #### See `Java_Installation.md`
 
