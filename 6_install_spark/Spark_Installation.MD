@@ -9,24 +9,24 @@
 > wget http://www.trieuvan.com/apache/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
 
 # extract spark (run on terminal)
-> tar xvf spark-2.4.5-bin-hadoop2.7.tgz
+> tar -xzvf spark-2.4.5-bin-hadoop2.7.tgz <br>
 > mv spark-2.4.5-bin-hadoop2.7.tgz downloads/
 
 > ln -s spark-2.4.5-bin-hadoop2.7 spark
 
-### add paths to  .bash_profile
+### open ~/.bash_profile (run on terminal)
+> nano ~/.bash_profile
+
+### add paths to  .bash_profile (copy to ~/.bash_profile)
     export SPARK_HOME=/opt/spark
     export PATH=$PATH:$SPARK_HOME/bin
     export PATH=$PATH:$SPARK_HOME/sbin
 
-
 ### reload  ~/.bash_profile
 > source  ~/.bash_profile
 
-
 ### set pyspark to use jupyter notebook
 > pip install jupyter notebook
-
 
 ### edit bash_profile
 > nano  ~/.bash_profile

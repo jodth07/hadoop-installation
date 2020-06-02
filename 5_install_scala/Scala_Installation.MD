@@ -7,7 +7,7 @@
 > wget https://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz
 
 ### extract spark  (run on terminal)
-> tar xvf scala-2.11.8.tgz <br>
+> tar -xzvf scala-2.11.8.tgz <br>
 > mv scala-2.11.8.tgz downloads/
 
 ### create scala symbolic link
