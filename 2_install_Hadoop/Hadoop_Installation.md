@@ -23,6 +23,10 @@
 > ln -s hadoop-2.8.5 hadoop
 
 
+### edit `~/.bash_profile` file (run on terminal)
+> nano ~/.bash_profile
+
+
 ### add hadoop variables setup (copy to `~/.bash_profile`)
     # set up HADOOP_HOME
     export HADOOP_HOME=/opt/hadoop
@@ -55,10 +59,11 @@
 > nano hadoop-env.sh
 
 
-### Adding JAVA_HOME and HADOOP_CONF_DIR to `hadoop-env.sh` (copy to `hadoop-env.sh`)
-    export JAVA_HOME=$JAVA_HOME
-    export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
-
+### Adding JAVA_HOME and HADOOP_CONF_DIR to `hadoop-env.sh` (run on terminal)
+> echo "
+> export JAVA_HOME=$JAVA_HOME
+> export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
+> " >> hadoop-env.sh
 
 ### edit `core-site.xml` inline (run on terminal)
 > sed -i "/configuration>/d" core-site.xml
@@ -86,6 +91,8 @@
 ### Edit `hdfs-site.xml` (run on terminal)
 > sed -i "/configuration>/d" hdfs-site.xml
 
+### Edit `hdfs-site.xml` (run on terminal)
+> nano hdfs-site.xml
 
 ### add configurations to `hdfs-site.xml` (copy to `hdfs-site.xml`)
     <configuration>
@@ -114,6 +121,9 @@
 > sed -i "/configuration>/d" mapred-site.xml
 
 
+### edit `mapred-site.xml` (run on terminal)
+> nano mapred-site.xml
+
 ### add configurations to `mapred-site.xml` (copy to `mapred-site.xml`)
     <configuration>
         <property>
@@ -126,6 +136,8 @@
 ### edit `yarn-site.xml`  (run on terminal)
 > sed -i "/configuration>/d" yarn-site.xml
 
+### edit `yarn-site.xml`  (run on terminal)
+> nano yarn-site.xml
 
 ### add configurations to `yarn-site.xml` (copy to `yarn-site.xml`)
     <configuration>
