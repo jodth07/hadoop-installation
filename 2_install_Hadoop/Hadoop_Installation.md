@@ -66,9 +66,9 @@
 
 
 ### Adding JAVA_HOME and HADOOP_CONF_DIR to `hadoop-env.sh` (run on terminal)
-> echo "
-> export JAVA_HOME=$JAVA_HOME
-> export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
+> echo " <br>
+> export JAVA_HOME=$JAVA_HOME <br>
+> export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop <br>
 > " >> hadoop-env.sh
 
 ### edit `core-site.xml` inline (run on terminal)
